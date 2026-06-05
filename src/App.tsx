@@ -1,21 +1,8 @@
 import React from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 // --- Design Tokens ---
-const colors = {
-  parchment: '#f5f2e9', // Background
-  burgundy: '#5d0925',  // Primary/Accent
-  gold: '#c9a84c',      // Secondary Accent
-  offWhite: '#faf8f3',
-  dark: '#1a0a0e',      // Footer/Dark sections
-  deepDeepBurgundy: '#2a0d12' // Reservations
-};
-
-const typography = {
-  serif: "'Playfair Display', serif",
-  sans: "'DM Sans', sans-serif"
-};
 
 // --- Data ---
 const locations = [
@@ -271,28 +258,28 @@ const MenuSection = () => {
 
   const dishes = {
     Starters: [
-      { name: "Samosa Chaat", desc: "Crispy pastry with chickpeas & tamarind", price: "£6.95", img: "https://images.unsplash.com/photo-1601050690597-df056fbec701?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Seekh Kebab", desc: "Minced lamb with ginger & coriander", price: "£8.95", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c175f0?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Onion Bhaji", desc: "Golden fried onion fritters", price: "£5.95", img: "https://images.unsplash.com/photo-1626132646529-5aa212ddbbbe?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Papdi Chaat", desc: "Street-style crispy wafers with yoghurt", price: "£6.50", img: "https://images.unsplash.com/photo-1589647363585-f4a7d3eb201d?auto=format&fit=crop&q=80&w=400&h=300" }
+      { name: "Samosa Chaat", desc: "Crispy pastry with chickpeas & tamarind", price: "£6.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Seekh Kebab", desc: "Minced lamb with ginger & coriander", price: "£8.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Onion Bhaji", desc: "Golden fried onion fritters", price: "£5.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Papdi Chaat", desc: "Street-style crispy wafers with yoghurt", price: "£6.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" }
     ],
     Mains: [
       { name: "Chicken Tikka Masala", desc: "Tender chicken in rich tomato-cream sauce", price: "£14.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Lamb Rogan Josh", desc: "Slow-cooked lamb with Kashmiri spices", price: "£16.95", img: "https://images.unsplash.com/photo-1542367592-88c9eb6b76ff?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Paneer Makhani", desc: "Cottage cheese in velvety butter sauce", price: "£12.95", img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Dal Makhani", desc: "Black lentils slow cooked overnight", price: "£11.95", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80&w=400&h=300" }
+      { name: "Lamb Rogan Josh", desc: "Slow-cooked lamb with Kashmiri spices", price: "£16.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Paneer Makhani", desc: "Cottage cheese in velvety butter sauce", price: "£12.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Dal Makhani", desc: "Black lentils slow cooked overnight", price: "£11.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" }
     ],
     Desserts: [
-      { name: "Gulab Jamun", desc: "Soft milk dumplings in rose syrup", price: "£5.50", img: "https://images.unsplash.com/photo-1589114471223-dec0d8d572c6?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Mango Kulfi", desc: "Traditional Indian ice cream", price: "£4.95", img: "https://images.unsplash.com/photo-1570145820259-b5b80c5c8bd6?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Ras Malai", desc: "Cottage cheese in sweet saffron milk", price: "£5.95", img: "https://images.unsplash.com/photo-1596797038530-2c39da12b629?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Gajar Halwa", desc: "Slow-cooked carrot pudding", price: "£5.50", img: "https://images.unsplash.com/photo-1622314545300-349f993f350c?auto=format&fit=crop&q=80&w=400&h=300" }
+      { name: "Gulab Jamun", desc: "Soft milk dumplings in rose syrup", price: "£5.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Mango Kulfi", desc: "Traditional Indian ice cream", price: "£4.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Ras Malai", desc: "Cottage cheese in sweet saffron milk", price: "£5.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Gajar Halwa", desc: "Slow-cooked carrot pudding", price: "£5.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" }
     ],
     Drinks: [
-      { name: "Mango Lassi", desc: "Yoghurt blended with Alphonso mango", price: "£4.50", img: "https://images.unsplash.com/photo-1563200216-953b01859c2c?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Masala Chai", desc: "Spiced Indian tea with milk", price: "£3.50", img: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Rose Sharbat", desc: "Chilled rose water drink", price: "£3.95", img: "https://images.unsplash.com/photo-1601648764658-cf37e8c89b70?auto=format&fit=crop&q=80&w=400&h=300" },
-      { name: "Nimbu Pani", desc: "Fresh lime soda with mint", price: "£3.50", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=400&h=300" }
+      { name: "Mango Lassi", desc: "Yoghurt blended with Alphonso mango", price: "£4.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Masala Chai", desc: "Spiced Indian tea with milk", price: "£3.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Rose Sharbat", desc: "Chilled rose water drink", price: "£3.95", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" },
+      { name: "Nimbu Pani", desc: "Fresh lime soda with mint", price: "£3.50", img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400&h=300" }
     ]
   };
 
@@ -777,7 +764,7 @@ const App = () => {
 
   return (
     <div className="bg-[#f5f2e9] selection:bg-[#5d0925] selection:text-[#faf8f3]">
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#c9a84c] z-[60] origin-left" style={{ scaleX: useScroll().scrollProgress }} />
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#c9a84c] z-[60] origin-left" style={{ scaleX: useScroll().scrollYProgress }} />
       
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <Hero onOpenModal={() => setIsModalOpen(true)} />
